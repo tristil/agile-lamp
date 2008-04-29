@@ -2,7 +2,7 @@ require 'agilelamp/version'
 
 AUTHOR = 'Joseph Method'  # can also be an array of Authors
 EMAIL = "tristil@gmail.com"
-DESCRIPTION = "description of gem"
+DESCRIPTION = "An application to coordinate a usb lava lamp with continuous build systems like cruisecontrol."
 GEM_NAME = 'agilelamp' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = 'agilelamp' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"

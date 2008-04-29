@@ -1,5 +1,3 @@
-require 'rinotify'
-
 module AgileLamp
   class StatusIcon
     def initialize

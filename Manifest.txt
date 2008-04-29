@@ -23,7 +23,7 @@ tasks/deployment.rake
 tasks/environment.rake
 tasks/website.rake
 test/test_helper.rb
-test/test_minder.rb
+test/test_agilelamp.rb
 website/index.html
 website/index.txt
 website/javascripts/rounded_corners_lite.inc.js
