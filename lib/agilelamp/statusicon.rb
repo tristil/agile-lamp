@@ -1,4 +1,4 @@
-require 'RNotify'
+require 'rinotify'
 
 module AgileLamp
   class StatusIcon

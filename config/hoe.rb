@@ -1,4 +1,4 @@
-require 'minder/version'
+require 'agilelamp/version'
 
 AUTHOR = 'Joseph Method'  # can also be an array of Authors
 EMAIL = "tristil@gmail.com"
@@ -31,8 +31,8 @@ end
 REV = nil 
 # UNCOMMENT IF REQUIRED: 
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
-VERS = Minder::VERSION::STRING + (REV ? ".#{REV}" : "")
-RDOC_OPTS = ['--quiet', '--title', 'minder documentation',
+VERS = AgileLamp::VERSION::STRING + (REV ? ".#{REV}" : "")
+RDOC_OPTS = ['--quiet', '--title', 'agilelamp documentation',
     "--opname", "index.html",
     "--line-numbers", 
     "--main", "README",

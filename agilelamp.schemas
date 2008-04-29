@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gconfschemafile>
+	<schemalist>
+		<schema>
+			<key>/schemas/apps/agilelamp/broken_build</key>
+			<applyto>/apps/agilelamp/broken_build</applyto>
+			<owner>agilelamp</owner>
+			<type>bool</type>
+			<default>false</default>
+			<locale name="C"/>
+		</schema>
+
+	</schemalist>
+</gconfschemafile>
+
