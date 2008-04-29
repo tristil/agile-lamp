@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>server_info (Notify)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*
+ * call-seq:
+ *      server_info
+ *
+ * Queries the server for its information( name, vendor, server version,
+ * notification version )
+ *
+ * Returns FALSE if there were errors, an Array otherwise
+ *
+ * example:
+ *
+ *      array = Notify.server_info
+ *      p array[0]      #print the product name of the server
+ *      p array[1]      #print the vendor
+ *      p array[2]      #print the server version
+ *      p array[3]      #print the specification version supported
+ */
+static VALUE
+get_server_info( VALUE self ) {
+</pre>
+</body>
+</html>

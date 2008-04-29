@@ -1,0 +1,41 @@
+- ruby-libnotify-0.3.3
+	* Fixed conflict with .so files
+	* Change library (.so) name form libnotify.so to rnotify.so
+	* Change module name from LibNotify to Notify
+	* Change extconf.rb
+
+- ruby-libnotify-0.3.2
+	* Fixed a stupid coding error
+
+- ruby-libnotify-0.3.1
+	* added Gtk::StatusIcon support
+
+- ruby-libnotify-0.3.0
+	* LibNotify becomes a module
+	* the class methods of the old LibNotify class are now module
+	  functions
+	* the instance methods of the old LibNotify class, now belongs to the
+	  Notification class
+	* instance method `set_geometry_hints` renamed, see doc
+	* instance method `icon=` renamed, see doc
+	* module method `get_app_name` renamed, see doc
+	* module method `get_server_caps` renamed, see doc
+	* module method `get_server_info` renamed, see doc
+	* alias removed
+	* examples updated
+	* fixed extconf.rb to install ruby-libnotify on debian-based systems
+	* added rdoc docs
+	* added README
+	* added INSTALL
+	* libnotify version free
+
+- ruby-libnotify-0.2.0
+	* Initial public release, require libnotify >= 0.4.1
+
+=========================== Pre release ===========================
+
+- ruby-libnotify-0.1.1
+	* small bug fixes
+
+- ruby-libnotify-0.1.0
+	* let's write code :P

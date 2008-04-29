@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>notify</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="index.html" title="Libnotify Reference Manual">
+<link rel="up" href="ch01.html" title="Libnotify">
+<link rel="prev" href="ch01.html" title="Libnotify">
+<link rel="next" href="NotifyNotification.html" title="NotifyNotification">
+<meta name="generator" content="GTK-Doc V1.7 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Libnotify">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch01.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Libnotify Reference Manual</th>
+<td><a accesskey="n" href="NotifyNotification.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts"><nobr><a href="#id2550627" class="shortcut">Top</a>
+                  &#160;|&#160;
+                  <a href="#id2481920" class="shortcut">Description</a></nobr></td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="libnotify-notify"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2>
+<a name="id2550627"></a><span class="refentrytitle">notify</span>
+</h2>
+<p>notify &#8212; Notification API</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+
+
+
+gboolean    <a href="libnotify-notify.html#notify-init">notify_init</a>                     (const char *app_name);
+void        <a href="libnotify-notify.html#notify-uninit">notify_uninit</a>                   (void);
+gboolean    <a href="libnotify-notify.html#notify-is-initted">notify_is_initted</a>               (void);
+const gchar* <a href="libnotify-notify.html#notify-get-app-name">notify_get_app_name</a>            (void);
+GList*      <a href="libnotify-notify.html#notify-get-server-caps">notify_get_server_caps</a>          (void);
+gboolean    <a href="libnotify-notify.html#notify-get-server-info">notify_get_server_info</a>          (char **ret_name,
+                                             char **ret_vendor,
+                                             char **ret_version,
+                                             char **ret_spec_version);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="id2481920"></a><h2>Description</h2>
+<p>
+
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="id2481935"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="id2481946"></a><h3>
+<a name="notify-init"></a>notify_init ()</h3>
+<a class="indexterm" name="id2481958"></a><pre class="programlisting">gboolean    notify_init                     (const char *app_name);</pre>
+<p>
+Initialized libnotify. This must be called before any other functions.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>app_name</code></em>&#160;:</span></td>
+<td> The name of the application initializing libnotify.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> <code class="literal">TRUE</code> if successful, or <code class="literal">FALSE</code> on error.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2499861"></a><h3>
+<a name="notify-uninit"></a>notify_uninit ()</h3>
+<a class="indexterm" name="id2499873"></a><pre class="programlisting">void        notify_uninit                   (void);</pre>
+<p>
+Uninitialized libnotify.
+</p>
+<p>
+This should be called when the program no longer needs libnotify for
+the rest of its lifecycle, typically just before exitting.</p>
+<p>
+
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2499904"></a><h3>
+<a name="notify-is-initted"></a>notify_is_initted ()</h3>
+<a class="indexterm" name="id2499916"></a><pre class="programlisting">gboolean    notify_is_initted               (void);</pre>
+<p>
+Gets whether or not libnotify is initialized.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> <code class="literal">TRUE</code> if libnotify is initialized, or <code class="literal">FALSE</code> otherwise.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2522823"></a><h3>
+<a name="notify-get-app-name"></a>notify_get_app_name ()</h3>
+<a class="indexterm" name="id2522836"></a><pre class="programlisting">const gchar* notify_get_app_name            (void);</pre>
+<p>
+Gets the application name registered.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> The registered application name, passed to <a href="libnotify-notify.html#notify-init"><code class="function">notify_init()</code></a>.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2522886"></a><h3>
+<a name="notify-get-server-caps"></a>notify_get_server_caps ()</h3>
+<a class="indexterm" name="id2522897"></a><pre class="programlisting">GList*      notify_get_server_caps          (void);</pre>
+<p>
+Queries the server for its capabilities and returns them in a <span class="type">GList</span>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> A <span class="type">GList</span> of server capability strings.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2522951"></a><h3>
+<a name="notify-get-server-info"></a>notify_get_server_info ()</h3>
+<a class="indexterm" name="id2522963"></a><pre class="programlisting">gboolean    notify_get_server_info          (char **ret_name,
+                                             char **ret_vendor,
+                                             char **ret_version,
+                                             char **ret_spec_version);</pre>
+<p>
+Queries the server for its information, specifically, the name, vendor,
+server version, and the version of the notifications specification that it
+is compliant with.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ret_name</code></em>&#160;:</span></td>
+<td> The resulting server name.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ret_vendor</code></em>&#160;:</span></td>
+<td> The resulting server vendor.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ret_version</code></em>&#160;:</span></td>
+<td> The resulting server version.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><em class="parameter"><code>ret_spec_version</code></em>&#160;:</span></td>
+<td> The resulting version of the specification the server is
+                   compliant with.
+</td>
+</tr>
+<tr>
+<td>
+<span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> <code class="literal">TRUE</code> if successful, and the variables passed will be set. <code class="literal">FALSE</code>
+         on failure.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</body>
+</html>

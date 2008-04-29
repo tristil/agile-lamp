@@ -1,0 +1,9 @@
+Installation Instructions
+*************************
+
+1. `cd' to the directory containing the package's source code
+2. Type `ruby extconf.rb'
+3. Type `make'
+3. Type `make install' as root
+
+That's all

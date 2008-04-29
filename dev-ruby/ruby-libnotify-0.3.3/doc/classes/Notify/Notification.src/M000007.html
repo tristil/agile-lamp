@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Notify::Notification)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*
+ * call-seq:
+ *      new( summ, msg, icon, widget )
+ *
+ * summ = The summary text ( required )
+ *
+ * msg = The body text or nil
+ *
+ * icon = The icon or nil
+ *
+ * widget = The widget (or a Gtk::StatusIcon, when compiled against GTK+ &gt;= 2.9.2 and libnotify &gt;= 0.4.1) to attach to or nil
+ *
+ * Creates and returns a new notification
+ */
+static VALUE
+notification_init( VALUE self, VALUE summ, VALUE msg,
+                         VALUE icon, VALUE widget ) {
+</pre>
+</body>
+</html>

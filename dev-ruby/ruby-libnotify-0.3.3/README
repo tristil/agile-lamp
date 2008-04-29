@@ -1,0 +1,5 @@
+On debian based systems( tested on ubuntu dapper ) you MUST build those packages:
+
+build-essential
+ruby1.8
+ruby1.8-dev

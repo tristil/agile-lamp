@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>update (Notify::Notification)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*
+ * call-seq:
+ *      update( summ, msg, icon )
+ *
+ * summ = The new summary text ( required )
+ *
+ * msg = The new body text or nil
+ *
+ * icon = The new icon or nil
+ *
+ * This won't send the update out and display it on the screen.
+ * For that, you will need to call the show method.
+ *
+ * return TRUE if ok or FALSE otherwise
+ */
+static VALUE
+notification_update( VALUE self, VALUE summ, VALUE msg, VALUE icon ) {
+</pre>
+</body>
+</html>

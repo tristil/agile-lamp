@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>add_action (Notify::Notification)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>/*
+ * call-seq:
+ *      add_action( action, label, user_data ) { |action, user_data| ... }
+ *
+ * action = The action id
+ *
+ * label = The action label
+ *
+ * user_data = Custom data to pass into the block ( optional )
+ *
+ * Adds an action. When the action is invoked, the specified block will be called
+ *
+ * Examples:
+ *
+ * myinstance.add_action( &quot;MyAction&quot;, &quot;MyLabel&quot; ) do |action|
+ *      # something to do
+ * end
+ *
+ * Or
+ *
+ * myinstance.add_action( &quot;MyAction&quot;, &quot;MyLabel&quot;, MyData ) do |action, mydata|
+ *      # something to do
+ * end
+ */
+static VALUE
+notification_add_action( int argc, VALUE *argv, VALUE self ) {
+</pre>
+</body>
+</html>
