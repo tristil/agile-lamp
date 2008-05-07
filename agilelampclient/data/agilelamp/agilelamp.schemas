@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gconfschemafile>
+  <schemalist>
+    <schema>
+      <key>/schemas/apps/agilelamp/build_state</key>
+      <applyto>/apps/agilelamp/build_state</applyto>
+      <owner>agilelamp</owner>
+      <type>string</type>
+      <default>"broken"</default>
+      <locale name="C"/>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/agilelamp/website</key>
+      <applyto>/apps/agilelamp/website</applyto>
+      <owner>agilelamp</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C"/>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/agilelamp/check_interval</key>
+      <applyto>/apps/agilelamp/check_interval</applyto>
+      <owner>agilelamp</owner>
+      <type>int</type>
+      <default>10</default>
+      <locale name="C"/>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/agilelamp/username</key>
+      <applyto>/apps/agilelamp/username</applyto>
+      <owner>agilelamp</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C"/>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/agilelamp/password</key>
+      <applyto>/apps/agilelamp/password</applyto>
+      <owner>agilelamp</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C"/>
+    </schema>
+
+  </schemalist>
+</gconfschemafile>
+
