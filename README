@@ -1,0 +1,5 @@
+Git tips:
+---------
+  * git config --global user.name "Your Name Comes Here"
+  * git config --global user.email me@abc.com
+  * git push git@gitorious.org:agile-lamp/meihomes-clone.git
