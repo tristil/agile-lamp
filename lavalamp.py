@@ -31,6 +31,18 @@ DONT_REMEMBER = (0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc
 # or ff fe fd fc fb fa f9 f8 f7 f6 f5 f4 f3 f2 f1 f0
 ALL_OFF = (0xff, 0xfe, 0xfd, 0xfc, 0xfb, 0xfa, 0xf9, 0xf8, 0xf7, 0xf6, 0xf5, 0xf4, 0xf3, 0xf2, 0xf1, 0xf0)
 
+SIXTEEN_BYTE_THEORY = (0,0,0,0, 0,0,0,0, 
+                       0,0,0,0, 0,0,0,0,
+                       0,0,0,0, 0,0,0,0,
+                       0,0,0,0, 0,0,0,0,
+                       0,0,0,0, 0,0,0,0,
+                       0,0,0,0, 0,0,0,0,
+                       0,0,0,0, 0,0,0,0,
+                       0,0,0,0, 0,0,0,5)
+SIXTEEN_BYTE_THEORY_OTHER_WAY = (5,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0)
+
+SET_FEATURE_REQUEST_TYPE = usb.TYPE_STANDARD | usb.RECIP_ENDPOINT
+
 def get_device():
     busses = usb.busses()
     device = None 
@@ -80,8 +92,6 @@ def open_device():
     # another "CBW"/control message or an interruptWrite or a bulkWrite. IN
     # transaction to endpoint 1 makes me think interruptWrite. 
 
-    sixteen_byte_string = (0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1)
-
     # Just reading to see if anything comes out
     read = handle.bulkRead(0x82, 16, 1000)
     print "First read is %s" % str(read)
@@ -91,16 +101,17 @@ def open_device():
     print "Writing to 0x82" 
 
     # interrupt-style messages are endpoint, buffer, timeout
-    handle.bulkWrite(0x82, sixteen_byte_string, 1000)
-    handle.bulkWrite(0x82, GREEN_LIGHT, 1000)
-    handle.interruptWrite(0x82, sixteen_byte_string, 1000)
-    handle.interruptWrite(0x82, GREEN_LIGHT, 1000)
+    handle.bulkWrite(0x82, SIXTEEN_BYTE_THEORY, 1000)
+    handle.interruptWrite(0x82, SIXTEEN_BYTE_THEORY, 1000)
+    handle.controlMsg(SET_FEATURE_REQUEST_TYPE, usb.REQ_SET_FEATURE, SIXTEEN_BYTE_THEORY, 32, 0x82)
 
     # I got this from http://www.beyondlogic.org/usbnutshell/usb6.htm under
     # Standard Endpoint Requests, Standard Endpoint SET_FEATURE request. This
     # gives a broken pipe message.
 
-    wrote = handle.controlMsg(0x010b, 0x03, (), 1, 0x82)
+    #wrote = handle.controlMsg(0x010b, 0x03, (0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,9), 1, 0x82)
+    #wrote = handle.controlMsg(0x21, 0x09, (0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,9), 0x0, 1)
+    #print wrote
 
     read = handle.bulkRead(0x82, 16, 1000)
     print "Second read (after 'write' is %s)" % str(read)
