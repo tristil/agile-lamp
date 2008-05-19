@@ -35,21 +35,53 @@ void set_red_with_bell(){
   send_lamp_command("red with bell", message_part_1, message_part_2);
 }
 
+/*
+Fun with bit-math:
+
+Everything on the first (from right) 8 bits of first (from right) byte 
+
+b0:=1:Bell active;=0:Bell off
+b1:=1:Green led on; =0:Green led off
+b2:=1:Red led on;=0:red led off
+b3:=0:7 colors led on;=1:7 colors led off
+
+                       b0
+1    1    1   1   1  111 
+128  64   32  16  8  421 = 255
+
+c    c    c   c   c  rgb  (c's are colors to cycle through, then red, green, bell)
+
+0    0    0  16  0  000 =
+ 
+*/
+
+void only_bell_on(){
+  char message_part_1[8] = {0,0,0,0, 0,0,0,0};
+  char message_part_2[8] = {0,0,0,0, 0,0,0,1};
+  send_lamp_command("green", message_part_1, message_part_2);
+}
+
+void red_with_no_bell(){
+  char message_part_1[8] = {0,0,0,0, 0,0,0,0};
+  char message_part_2[8] = {0,0,0,0, 0,0,0,4};
+  send_lamp_command("red with no bell", message_part_1, message_part_2);
+}
+
 void set_green(){
-  char message_part_1[8] = {0x5a,0x5a,0x5a,0x5a,0x5a,0x5a,0x5a,0x5a};   //green
-  char message_part_2[8] = {0x5a,0x5a,0x5a,0x5a,0x5a,0x5a,0x5a,0x5a};   // green 
+  char message_part_1[8] = {0,0,0,0, 0,0,0,0};   //green
+  char message_part_2[8] = {0,0,0,0 ,0,0,0,2};     // green 
   send_lamp_command("green", message_part_1, message_part_2);
 }
 
 void set_lights_off(){
-  char message_part_1[8] = {0x0, 0x1, 0x4, 0x9,0x10, 0x19, 0x24, 0x31};  //red with bell
-  char message_part_2[8] = {0x40, 0x51, 0x64, 0x79, 0x90, 0xa9, 0xc4, 0xe1}; // red with bell
+  char message_part_1[8] = {0,0,0,0, 0,0,0,0};  // lights off
+  char message_part_2[8] = {0,0,0,0, 0,0,0,0};  // lights off 
   send_lamp_command("lights off", message_part_1, message_part_2);
 }
 
 void set_colors_with_bell(){
-  char message_part_1[8] = {0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7};       //colors with bell
-  char message_part_2[8] = {0x8, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf};       // colors with bells
+  char message_part_1[8] = {0,0,0,0, 0,0,0,0};       //colors with bell
+  char message_part_2[8] = {0,0,0,0, 0,0,0,24};       // colors with bells
   send_lamp_command("colors with bells", message_part_1, message_part_2);
 }
 
@@ -130,11 +162,13 @@ int main(int argc, char *argv[])
     if(strcmp(argument, "green") == 0){
       set_green();
     } else if (strcmp(argument, "red") == 0){
-      set_red_with_bell();
+      red_with_no_bell();
     } else if (strcmp(argument, "off") == 0){
       set_lights_off();
     } else if (strcmp(argument, "various") == 0){
       set_colors_with_bell();
+    } else if (strcmp(argument, "bell") == 0){
+      only_bell_on();
     }
   }
   return 0;

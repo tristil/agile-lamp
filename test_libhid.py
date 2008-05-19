@@ -41,7 +41,7 @@ def main():
 
   hid_interface_1 = open_interface(1, matcher)
   hid_interface_0 = open_interface(0, matcher)
-
+  sys.exit() 
   # Set_Report with report type output, report ID 0, interface 1, and length 8
 
   ret = hid_set_output_report(hid_interface_1, (), "8") 

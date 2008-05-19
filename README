@@ -1,3 +1,9 @@
+Compile
+-------
+On Linux compile agilelamp.c with:
+gcc agilelamp.c -o agilelamp -lusb
+(needs libusb -dev headers installed)
+
 Git tips:
 ---------
   * git config --global user.name "Your Name Comes Here"
