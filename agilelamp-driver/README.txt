@@ -1,26 +1,21 @@
 = agilelamp-driver
 
-* FIX (url)
+* http://rubyforge.org/projects/agilelamp
 
 == DESCRIPTION:
-
-FIX (describe your package)
+  This is a userspace driver for controlling the Agile Lamp USB lava lamp.
+  Should work on any system that has libusb installed.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
-
-== SYNOPSIS:
-
-  FIX (code sample of usage)
-
-== REQUIREMENTS:
-
-* FIX (list of requirements)
+* `agilelamp-driver red`, `green`, `bell`, `various`
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install agilelamp-driver 
+* Pay attention to output message to see if agilelamp-driver is made and copied
+  to bin or the precompiled executable is installed. You will need to install
+  libusb headers if you want a compiled binary for your architecture.
 
 == LICENSE:
 

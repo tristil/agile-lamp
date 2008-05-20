@@ -28,13 +28,19 @@ end
 
 task :make_agilelamp_bin do
   cd "src/"
+  begin
   sh "make"
   cp "agilelamp-driver", "../bin"
+  rescue
+    puts "***************************"
+    puts "Couldn't compile for your architecture. Precompiled binary may still work. If not, try installing libusb headers (compile and install libusb from source)."
+    puts "***************************"
+  end
   cd "../"
 end
 
 task :install_gem => [:clean, :make_agilelamp_bin, :package] do
-  sh "#{'sudo ' unless Hoe::WINDOZE}gem install --local pkg/*.gem"
+  sh "#{'sudo ' unless Hoe::WINDOZE}gem install --no-wrappers --local pkg/*.gem"
 end
 
 namespace :manifest do
