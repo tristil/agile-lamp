@@ -35,7 +35,7 @@ REV = nil
 # UNCOMMENT IF REQUIRED:
 # REV = YAML.load(`svn info`)['Revision']
 #VERS = Agilelamp-driver::VERSION::STRING + (REV ? ".#{REV}" : "")
-VERS = "0.1.0"
+VERS = "0.1.1"
 RDOC_OPTS = ['--quiet', '--title', 'agilelamp-driver documentation',
     "--opname", "index.html",
     "--line-numbers",

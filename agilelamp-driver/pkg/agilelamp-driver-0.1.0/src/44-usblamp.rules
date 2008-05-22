@@ -1,0 +1,1 @@
+SYSFS{idVendor}=="1130", SYSFS{idProduct}=="0202", GROUP="plugdev", MODE="0777", OPTIONS="last_rule"

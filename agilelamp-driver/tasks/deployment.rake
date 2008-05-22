@@ -29,17 +29,43 @@ end
 task :make_agilelamp_bin do
   cd "src/"
   begin
-  sh "make"
-  cp "agilelamp-driver", "../bin"
+    sh "make"
+    cp "agilelamp-driver", "../bin"
   rescue
-    puts "***************************"
-    puts "Couldn't compile for your architecture. Precompiled binary may still work. If not, try installing libusb headers (compile and install libusb from source)."
-    puts "***************************"
+    puts <<EOF 
+
+******************************************************************************
+Couldn't compile for your architecture. Precompiled binary may still work.  If
+not, try installing libusb headers (compile and install libusb from source or
+get libusb-dev on debian systems)." 
+******************************************************************************
+
+EOF
   end
   cd "../"
 end
 
-task :install_gem => [:clean, :make_agilelamp_bin, :package] do
+task :install_udev_rule do
+  begin
+    if `uname`.strip == 'Linux'
+      puts "Installing udev rule to enable hardware use on Linux"
+      cp "src/44-usblamp.rules", "/etc/udev/rules.d/"
+      puts "Restarting udev..."
+      sh "/etc/init.d/udev restart"
+    end
+  rescue
+    puts <<EOF
+
+****************************************************************************
+Couldn't install udev rules for the USB lamp. Expected to be able to put file
+in /etc/udev/rules.d/. Was this a bad assumption?
+****************************************************************************
+
+EOF
+  end
+end
+
+task :install_gem => [:clean, :make_agilelamp_bin, :package, :install_udev_rule, ] do
   sh "#{'sudo ' unless Hoe::WINDOZE}gem install --no-wrappers --local pkg/*.gem"
 end
 

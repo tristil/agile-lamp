@@ -134,7 +134,6 @@ int load_device(){
     fprintf(stderr, "You didn't really get the launcher!\n");
     return 1;
   }
-
   usb_detach_kernel_driver_np(launcher, 1);
   usb_detach_kernel_driver_np(launcher, 0);
 

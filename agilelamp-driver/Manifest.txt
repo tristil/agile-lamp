@@ -14,6 +14,7 @@ bin/agilelamp-driver
 lib/agilelamp-driver.rb
 src/agilelamp.c
 src/Makefile
+src/44-usblamp.rules
 tasks/deployment.rake
 tasks/environment.rake
 tasks/website.rake

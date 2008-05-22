@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 GEM_NAME = 'agilelamp-driver' # what ppl will type to install your gem
-RUBYFORGE_PROJECT = 'agilelamp-driver'
+RUBYFORGE_PROJECT = 'agilelamp'
 
 require 'rubygems'
 begin
@@ -15,9 +15,9 @@ end
 require 'redcloth'
 require 'syntax/convertors/html'
 require 'erb'
-require File.dirname(__FILE__) + "/../lib/#{GEM_NAME}/version.rb"
+#require File.dirname(__FILE__) + "/../lib/#{GEM_NAME}/version.rb"
 
-version  = Agilelamp-driver::VERSION::STRING
+version  = "0.1.0" 
 download = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
 def rubyforge_project_id
