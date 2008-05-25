@@ -3,6 +3,7 @@ License.txt
 Manifest.txt
 README.txt
 Rakefile
+bin/install-agilelamp-driver
 config/hoe.rb
 config/requirements.rb
 script/console
@@ -10,8 +11,8 @@ script/destroy
 script/generate
 script/txt2html
 setup.rb
-bin/agilelamp-driver
 lib/agilelamp-driver.rb
+src/agilelamp-driver
 src/agilelamp.c
 src/Makefile
 src/44-usblamp.rules

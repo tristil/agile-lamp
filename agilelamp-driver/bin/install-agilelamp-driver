@@ -1,0 +1,85 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+include FileUtils
+
+unless `uname`.strip == 'Linux'
+  puts <<EOF 
+
+This release is only tested for Linux, and really only for Debian-type systems.
+If you are using MacOS it will almost certainly not work.
+Continue? (y/n)
+
+EOF
+
+  char = STDIN.getc
+  exit unless char.chr == 'y'
+end
+
+unless `whoami`.strip == 'root'
+  puts "You need to be sudo for this to work."
+  exit
+end
+
+gem_dir = `gem which agilelamp-driver`
+parts = gem_dir.split.last.split("/")[0..-3]
+cd parts.join("/")
+
+cd "src"
+success = system "make"
+unless success
+  puts <<EOF 
+
+******************************************************************************
+Couldn't make agilelamp-driver. It's possible that the precompiled binary will
+work for you (on Linux but not MacOS). Continuing..."
+******************************************************************************
+
+EOF
+
+end
+
+puts "Installing agilelamp-driver to /usr/local/bin..."
+
+begin
+  cp "agilelamp-driver", "/usr/local/bin/agilelamp-driver"
+rescue
+  puts <<EOF
+
+**************************************************************************
+Couldn't copy agilelamp-driver to /usr/local/bin/. This shouldn't happen.
+**************************************************************************
+
+EOF
+
+end
+
+cd ".."
+cd "src"
+
+begin
+  puts "Installing udev rule..."
+  cp "44-usblamp.rules", "/etc/udev/rules.d"
+rescue
+  if `uname`.strip == 'Linux'
+    puts "Couldn't install 44-usblamp.rules to /etc/udev/rules.d"
+  end
+end
+
+begin
+  puts "Attempting to restart udev..."
+  system "/etc/init.d/udev restart"
+rescue
+  puts "Couldn't restart udev"
+end
+
+puts <<EOF
+
+To run agilelamp-driver use: 
+
+agilelamp-driver red      # red light
+agilelamp-driver green    # green light 
+agilelamp-driver bell     # unpleasant bell sound 
+agilelamp-driver various  # cycling colors 
+
+EOF
