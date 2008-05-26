@@ -1,0 +1,18 @@
+About this directory
+--------------------
+
+The approach to getting the code onto your system is a hack of Rubygems, which
+really only wants to install libraries and executables for you. The
+install-agilelamp-driver executable finds the gem directory, builds the
+agilelamp binary in place using agilelamp.c, and installs it to the system
+(this means agilelamp-driver won't be removed on gem uninstall either). It also
+installs 44-usblamp-rules to /etc/udev/rules.d/ and restarts udev. This is to
+keep the kernel from binding to the device. There is a Linux-specific call in
+libusb that is also necessary, usb_detach_kernel_np.
+
+On MacOS, it is necessary to install a "codeless kext" (a driver extension
+which does not contain accompanying C code, only a *.plist metadata file) to
+match the device and steal it from the kernel. sudo fetch_kext performs the
+operations necessary to build and install the codeless kext to the system.
+Unfortunately, at the time of this writing, the libusb code still does not work
+on MacOS, perhaps because of something wrong with the codeless kext.
