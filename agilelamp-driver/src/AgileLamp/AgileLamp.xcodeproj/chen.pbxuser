@@ -1,0 +1,68 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeTarget = 32A4FEB80562C75700D090E7 /* AgileLamp */;
+		codeSenseManager = 744261600DEB5DEF00A0AFE2 /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 233528906;
+			PBXWorkspaceStateSaveDate = 233528906;
+		};
+		sourceControlManager = 7442615F0DEB5DEF00A0AFE2 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	089C167EFE841241C02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 582}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {711, 582}}";
+			sepNavWindowFrame = "{{15, 62}, {750, 711}}";
+		};
+	};
+	32A4FEB80562C75700D090E7 /* AgileLamp */ = {
+		activeExec = 0;
+	};
+	32A4FEC30562C75700D090E7 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 1246}}";
+			sepNavSelRange = "{151, 22}";
+			sepNavVisRect = "{{0, 0}, {711, 582}}";
+			sepNavWindowFrame = "{{15, 62}, {750, 711}}";
+		};
+	};
+	7442615F0DEB5DEF00A0AFE2 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	744261600DEB5DEF00A0AFE2 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
