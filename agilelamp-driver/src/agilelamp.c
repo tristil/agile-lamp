@@ -21,6 +21,10 @@ void send_cbw(){
 
 void send_lamp_command(char* title, char* message1, char* message2){
   usb_reset(launcher);
+  usb_resetep(launcher, 0);
+  usb_resetep(launcher, 1);
+  usb_clear_halt(launcher, 0);
+  usb_clear_halt(launcher, 1);
   send_cbw();
   fprintf(stderr, "Submitting %s\n", title);
   int ret = send_message(message1, 0);
@@ -134,6 +138,7 @@ int load_device(){
     fprintf(stderr, "You didn't really get the launcher!\n");
     return 1;
   }
+
   usb_detach_kernel_driver_np(launcher, 1);
   usb_detach_kernel_driver_np(launcher, 0);
 
@@ -170,5 +175,8 @@ int main(int argc, char *argv[])
       only_bell_on();
     }
   }
+  usb_release_interface(launcher, 0);
+  usb_release_interface(launcher, 1);
+  usb_close(launcher);
   return 0;
 }
