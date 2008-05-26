@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+if `whoami`.strip != 'root'
+  puts "You need to be root. Try sudo."
+  exit
+end
+
+require 'fileutils'
+include FileUtils
+
+cd "AgileLamp"
+system "xcodebuild"
+
+rm_rf "/System/Library/Extensions/AgileLamp.kext"
+mv "build/Release/AgileLamp.kext", "/System/Library/Extensions/"
+
+system "chown -R root:wheel /System/Library/Extensions/AgileLamp.kext"
+
+system "kextload -v /System/Library/Extensions/AgileLamp.kext"
