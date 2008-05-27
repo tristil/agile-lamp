@@ -3,7 +3,11 @@
 #include <unistd.h>
 #include <string.h>
 
+// I should acknowledge the USB missile launcher code that served as an initial
+// template. Need to find the URL first...
+
 usb_dev_handle* launcher;
+
 //wrapper for control_msg
 int send_message(char* msg, int index)
 {
@@ -40,23 +44,23 @@ void set_red_with_bell(){
 }
 
 /*
-Fun with bit-math:
+   Fun with bit-math:
 
-Everything on the first (from right) 8 bits of first (from right) byte 
+   Everything on the first (from right) 8 bits of first (from right) byte 
 
 b0:=1:Bell active;=0:Bell off
 b1:=1:Green led on; =0:Green led off
 b2:=1:Red led on;=0:red led off
 b3:=0:7 colors led on;=1:7 colors led off
 
-                       b0
+b0
 1    1    1   1   1  111 
 128  64   32  16  8  421 = 255
 
 c    c    c   c   c  rgb  (c's are colors to cycle through, then red, green, bell)
 
 0    0    0  16  0  000 =
- 
+
 */
 
 void only_bell_on(){
@@ -89,8 +93,32 @@ void set_colors_with_bell(){
   send_lamp_command("colors with bells", message_part_1, message_part_2);
 }
 
+int claim_interface(int num){
+  int claimed = -1;
+  //do stuff
+
+  claimed = usb_claim_interface(launcher, num);
+  printf("Interface %d claimed with %d\n", num, claimed);
+
+  //usb_detach_kernel_driver_np(launcher, 1);
+  //usb_detach_kernel_driver_np(launcher, 0);
+  printf("%d <= 0: %s\n", claimed, claimed <= 0);
+
+  if (claimed <= 0)
+  {
+    printf("Preparing to release interface %d\n", num);
+    usb_release_interface(launcher, num);
+    printf("Couldn't claim interface %d \n", num);
+    usb_close(launcher);
+    return 1;
+  } else if (claimed > 0){
+    printf("Claimed interface %d \n", num);
+  }
+  return 0;
+}
+
 int load_device(){
-  int claimed;
+  int ret;
 
   fprintf(stderr, "Starting\n");
 
@@ -126,30 +154,37 @@ int load_device(){
     }
   }
 
-  fprintf(stderr, "Got launcher...\n");
-
-  //do stuff
-  if(launcher != NULL)
-  {
-    int claimed = usb_claim_interface(launcher, 1);
+  if(launcher == NULL){ 
+    printf("Didn't get launcher!\n");
+    return 1;
+  } else {
+    printf("Got launcher...\n");
   }
-  else
-  {
-    fprintf(stderr, "You didn't really get the launcher!\n");
+
+  ret = claim_interface(0);
+  printf("Interface 0 returned %d\n", ret);
+  if(ret == 1){
+    printf("Returning 1 in claim_interface\n");
     return 1;
   }
 
-  usb_detach_kernel_driver_np(launcher, 1);
-  usb_detach_kernel_driver_np(launcher, 0);
-
-  if (claimed == 0)
-  {
-    usb_release_interface(launcher, 1);
+  ret = claim_interface(1);
+  printf("Interface 1 returned %d\n", ret);
+  if(ret == 1){
+    printf("Returning 1 in claim_interface\n");
     return 1;
-  } else if (claimed > 0){
-    fprintf(stderr, "Found launcher...\n");
   }
 
+  fprintf(stderr, "Claimed interfaces\n");
+  return 0;
+}
+
+void lamp_shutdown(){
+  int ret = usb_release_interface(launcher, 0);
+  printf("Released interface 0: %d\n", ret);
+  ret = usb_release_interface(launcher, 1);
+  printf("Released interface 1: %d\n", ret);
+  usb_close(launcher);
 }
 
 int main(int argc, char *argv[])
@@ -162,6 +197,9 @@ int main(int argc, char *argv[])
   else 
   {
     int ret = load_device();
+    if(ret == 1)
+      lamp_shutdown();
+    return 1;
     char* argument = argv[1];
     if(strcmp(argument, "green") == 0){
       set_green();
@@ -175,8 +213,6 @@ int main(int argc, char *argv[])
       only_bell_on();
     }
   }
-  usb_release_interface(launcher, 0);
-  usb_release_interface(launcher, 1);
-  usb_close(launcher);
+  lamp_shutdown();
   return 0;
 }

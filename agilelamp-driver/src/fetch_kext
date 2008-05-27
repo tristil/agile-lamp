@@ -15,5 +15,5 @@ rm_rf "/System/Library/Extensions/AgileLamp.kext"
 mv "build/Release/AgileLamp.kext", "/System/Library/Extensions/"
 
 system "chown -R root:wheel /System/Library/Extensions/AgileLamp.kext"
-
+system "touch /System/Library/Extensions/AgileLamp.kext"
 system "kextload -v /System/Library/Extensions/AgileLamp.kext"

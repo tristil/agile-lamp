@@ -32,11 +32,11 @@
         <integer>106000</integer>
         <key>IOProviderClass</key>
         <string>IOUSBInterface</string>
-        <key>IOProviderMergeProperties</key>
+        <!-- <key>IOProviderMergeProperties</key>
         <dict>
           <key>ClassicMustNotSeize</key>
           <true/>
-        </dict>
+        </dict> -->
         <key>bConfigurationValue</key>
         <integer>1</integer>
         <key>bInterfaceNumber</key>
@@ -60,11 +60,11 @@
         <integer>106000</integer>
         <key>IOProviderClass</key>
         <string>IOUSBInterface</string>
-        <key>IOProviderMergeProperties</key>
+        <!-- <key>IOProviderMergeProperties</key>
         <dict>
           <key>ClassicMustNotSeize</key>
           <true/>
-        </dict>
+        </dict> -->
         <key>bConfigurationValue</key>
         <integer>1</integer>
         <key>bInterfaceNumber</key>
@@ -81,8 +81,8 @@
     <dict>
       <key>com.apple.iokit.IOHIDFamily</key>
       <string>1.2</string>
-      <key>com.apple.kernel.iokit</key>
-      <string>6.0</string>
+      <!-- <key>com.apple.kernel.iokit</key>
+      <string>6.0</string> -->
     </dict>
   </dict>
 </plist>
