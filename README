@@ -1,17 +1,75 @@
-Compile
+Agile Lamp
+==========
+
+Main Website
+------------
+http://agilelamp.rubyforge.org
+
+Mailing List
+------------
+http://groups.google.com/group/agile-lamp-projects
+
+Project Info:
+-------------
+This repository hosts code to support the Agile Lamp, a lava lamp that responds
+to signals over USB that is intended to be used in agile testing scenarios, for
+example in a continuous integration (e.g., CruiseControl) setup. Currently
+there are only 10 Agile Lamps in existence.
+
+The main piece of software at the moment is the agilelamp-driver. This is a
+userspace driver for controlling the Agile Lamp. MacOS (Leopard untested) and
+Linux systems currently supported. The best option for installing the
+agilelamp-driver is through rubygems (http://rubygems.org). 
+
+Requirements
+------------
+* Rubygems
+* System build tools (Development Tools from the second MacOS DVD/ build-essential on Debian/Ubuntu)
+* Installed libusb headers (e.g., libusb installed from source on MacOS, libusb-dev on Debian/Ubuntu)
+
+Installation Instructions
+-------------------------
+* sudo gem install agilelamp-driver
+* sudo install-agilelamp-driver (NB: this step is necessary)
+* Note carefully any compiler failure messages. These probably mean that you
+ don't have the required headers installed
+* If installation was successful, you should be able to type `agilelamp-driver red` 
+ and the Agile Lamp will glow red. w00t!
+
+Development Information
+-----------------------
+* The developers of the agilelamp-driver are big hypocrites, because the
+ agilelamp-driver was not developed with TDD and does not have a test suite. We
+ use TDD in our other projects, we swear!
+* agilelampclient is the beginning of a GUI client for Gnome, for enabling the
+ agile lamp to poll CruiseControl
+* Helpful information about USB:
+* http://www.beyondlogic.org/usbnutshell/usb1.htm Particularly: 
+	- requests -- http://www.beyondlogic.org/usbnutshell/usb6.htm
+	- transfer/endpoint types -- http://www.beyondlogic.org/usbnutshell/usb6.htm
+
+License
 -------
-On Linux compile agilelamp.c with:
-gcc agilelamp.c -o agilelamp -lusb
-(needs libusb -dev headers installed)
 
-Git tips:
----------
-  * git config --global user.name "Your Name Comes Here"
-  * git config --global user.email me@abc.com
-  * git push git@gitorious.org:agile-lamp/meihomes-clone.git
+(The MIT License)
 
-Helpful information about USB: 
-http://www.beyondlogic.org/usbnutshell/usb1.htm
-particularly: 
-requests -- http://www.beyondlogic.org/usbnutshell/usb6.htm
-transfer/endpoint types -- http://www.beyondlogic.org/usbnutshell/usb6.htm
+Copyright (c) 2008 Joseph Method
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
