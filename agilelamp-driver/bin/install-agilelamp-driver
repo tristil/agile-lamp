@@ -54,6 +54,9 @@ EOF
 
 end
 
+puts "Making agilelamp-driver executable..."
+system "chmod +x /usr/local/bin/agilelamp-driver"
+
 cd ".."
 cd "src"
 
