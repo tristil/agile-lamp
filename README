@@ -24,6 +24,7 @@ agilelamp-driver is through rubygems (http://rubygems.org).
 Requirements
 ------------
 * Rubygems
+* Install may work out of the box on MacOS, as a pre-compiled .Kext for x86 will be installed
 * System build tools (Development Tools from the second MacOS DVD/ build-essential on Debian/Ubuntu)
 * Installed libusb headers (e.g., libusb installed from source on MacOS, libusb-dev on Debian/Ubuntu)
 
@@ -35,6 +36,7 @@ Installation Instructions
  don't have the required headers installed
 * If installation was successful, you should be able to type `agilelamp-driver red` 
  and the Agile Lamp will glow red. w00t!
+* Yes, this installation procedures needs to be made much simpler
 
 Development Information
 -----------------------
